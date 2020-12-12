@@ -1,6 +1,5 @@
-.swiper-container {
-  /* width: 500px; */
-}
-.swiper-wrapper {
-  /* padding-inline-start: 0; */
+ul {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
 }

@@ -6,6 +6,8 @@ import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
 import "./App.css";
+import no_profile_image from "./images/no_profile_image.jpg";
+
 import {data} from "./json"
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -17,18 +19,19 @@ function App() {
   return (
     <div className="App">
     <Swiper
-      navigation
       tag="section"
       wrapperTag="ul"
       spaceBetween={0}
       slidesPerView={1}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
     >
       {newMatches.map((item, i) => {
         if(!item.to.photoRect) return (
           <SwiperSlide key={`slide-${i}`} tag='li'>
-            no picture
+            
+            <img
+            src={no_profile_image}
+            alt={`Slide ${i}`}
+            />
             </SwiperSlide>
         )
         
