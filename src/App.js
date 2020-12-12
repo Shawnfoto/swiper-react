@@ -1,16 +1,14 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
-import "./App.css";
+import "./App.scss";
 import no_profile_image from "./images/no_profile_image.jpg";
 
 import {data} from "./json"
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 function App() {
   const { newMatches } = data
@@ -27,7 +25,6 @@ function App() {
       {newMatches.map((item, i) => {
         if(!item.to.photoRect) return (
           <SwiperSlide key={`slide-${i}`} tag='li'>
-            
             <img
             src={no_profile_image}
             alt={`Slide ${i}`}
@@ -37,10 +34,23 @@ function App() {
         
         return (
           <SwiperSlide key={`slide-${i}`} tag='li'>
+            <div className="img-container">
             <img
             src={`${item.to.photoRect}`}
             alt={`Slide ${i}`}
             />
+            <div className="info">
+                <div className="name">{item.to.name}</div>
+                <div className="job-title">{item.to.jobTitle}</div>
+                <div className="location">{item.to.displayLocation}</div>
+                <div className="backgrounds">{item.to.backgrounds}</div>
+                <div className="industries">{item.to.industries}</div>
+                <div className="interests">{item.to.interests}</div>
+                
+            </div>
+
+            </div>
+           
             </SwiperSlide>
         )
       })}
