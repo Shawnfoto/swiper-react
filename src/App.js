@@ -1,4 +1,5 @@
-import { Button, Chip } from "@material-ui/core"
+import React, { useState } from "react";
+import { Chip } from "@material-ui/core"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
@@ -12,11 +13,14 @@ import no_profile_image from "./images/no_profile_image.jpg";
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
-
+import IconButton from '@material-ui/core/IconButton';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import {data} from "./json"
 
 
 function App() {
+  const [thumbUp, setThumbUp] = useState(false)
   const { newMatches } = data
   console.log("newMatches",newMatches)
 
@@ -29,24 +33,26 @@ function App() {
       slidesPerView={1}
     >
       {newMatches.map((item, i) => {
-        if(!item.to.photoRect) return (
-          <SwiperSlide key={`slide-${i}`} tag='li'>
-            <img
-            src={no_profile_image}
-            alt={`Slide ${i}`}
-            />
-            </SwiperSlide>
-        )
-        
         return (
           <SwiperSlide key={`slide-${i}`} tag='li'>
             <div className="img-container">
               <img
-              src={`${item.to.photoRect}`}
+              src={item.to.photoRect ? item.to.photoRect : no_profile_image}
               alt={`Slide ${i}`}
               />
               <div className="info">
-                  <div className="name info-padding">{item.to.name}</div>
+                  <div className="name info-padding">
+                    <div className="text">
+                      <div>
+                        {item.to.name}
+                      </div>
+                      
+                      <PlayCircleOutlineIcon size="large"/>
+                    </div>
+                    <IconButton color={thumbUp ? "secondary" : "inherit"} onClick={()=> setThumbUp(!thumbUp)}>
+                      <ThumbUpIcon/>
+                    </IconButton>
+                    </div>
                   <div className="job-title info-padding">
                     <BusinessCenterIcon className="icon"/>
                     <div className="text">{item.to.jobTitle}</div>
@@ -95,9 +101,10 @@ function App() {
                     
                     </div>
               </div>
+              
               <FormatQuoteIcon
-               color="primary"
-               size="large"
+                color="primary"
+                size="large"
                />
               <div className="desc">
                 {item.to.aboutMe}
