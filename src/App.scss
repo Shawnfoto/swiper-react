@@ -18,6 +18,9 @@ img {
 .chip-space{
   margin-right: 5px;
 }
+.info-padding {
+  padding: 4px 0;
+}
 
 .img-container {
   position: relative;
@@ -44,5 +47,8 @@ img {
       align-items: center;
     }
    
+  }
+  .desc {
+    color: rgb(44, 42, 42);
   }
 }
