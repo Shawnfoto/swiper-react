@@ -1,3 +1,4 @@
+import { Button, Chip } from "@material-ui/core"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
@@ -6,6 +7,11 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 
 import "./App.scss";
 import no_profile_image from "./images/no_profile_image.jpg";
+
+// icon
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+
 
 import {data} from "./json"
 
@@ -41,12 +47,53 @@ function App() {
             />
             <div className="info">
                 <div className="name">{item.to.name}</div>
-                <div className="job-title">{item.to.jobTitle}</div>
-                <div className="location">{item.to.displayLocation}</div>
-                <div className="backgrounds">{item.to.backgrounds}</div>
-                <div className="industries">{item.to.industries}</div>
-                <div className="interests">{item.to.interests}</div>
-                
+                <div className="job-title">
+                  <BusinessCenterIcon className="icon"/>
+                  <div className="text">{item.to.jobTitle}</div>
+                </div>
+                <div className="location">
+                  <LocationOnIcon className="icon"/>
+                  <div className="text"> {item.to.displayLocation}</div>
+                </div>
+                <div className="backgrounds">
+                  {item.to.backgrounds.map((background, i) => {
+                    return (
+                      <Chip 
+                      key={`background-chip-${i}`}
+                      className="chip-space"
+                      label={background}
+                      color="primary"
+                      size="small"
+                       />
+                    )
+                  })}
+                  </div>
+                <div className="industries">
+                {item.to.industries.map((industry, i) => {
+                    return (
+                      <Chip 
+                      key={`industry-chip-${i}`}
+                      className="chip-space"
+                      label={industry}
+                      color="secondary"
+                      size="small"
+                       />
+                    )
+                  })}
+                  </div>
+                <div className="interests">
+                {item.to.interests.map((interest, i) => {
+                    return (
+                      <Chip 
+                      key={`interest-chip-${i}`}
+                      className="chip-space"
+                      label={interest}
+                      size="small"
+                       />
+                    )
+                  })}
+                  
+                  </div>
             </div>
 
             </div>

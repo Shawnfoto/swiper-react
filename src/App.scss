@@ -1,3 +1,4 @@
+
 ul {
   margin: 0;
   padding-left: 0;
@@ -10,11 +11,38 @@ img {
   height: 100%;
 }
 
+.App {
+  color: #ffffff;
+}
+
+.chip-space{
+  margin-right: 5px;
+}
+
 .img-container {
   position: relative;
   .info {
-    height: 40%;
+    height: 50%;
     position: absolute;
     bottom: 0;
+    .icon {
+      margin-right: 4px;
+    }
+
+    .name {
+      font-weight: bold;
+      font-size: 26px;
+    }
+
+    .job-title {
+      display: flex;
+      align-items: center;
+  
+    }
+    .location {
+      display: flex;
+      align-items: center;
+    }
+   
   }
 }
