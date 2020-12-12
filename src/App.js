@@ -22,7 +22,6 @@ import {data} from "./json"
 function App() {
   const [thumbUp, setThumbUp] = useState(false)
   const { newMatches } = data
-  console.log("newMatches",newMatches)
 
   return (
     <div className="App">
